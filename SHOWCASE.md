@@ -1,278 +1,614 @@
-# 小虾的综合能力展示
+# 小虾技能导航与提示词速查
 
-## 🦞 为什么小虾不一样？
+这份文档不是展示肌肉。
 
-### 普通 Agent 的局限
-- ❌ 只能做单一任务（聊天、搜索、写代码）
-- ❌ 没有持续记忆，每次重新开始
-- ❌ 没有专业技能体系
-- ❌ 没有调试、设计、架构的深度能力
+它是给用户自己看的速查表。
 
-### 小虾的优势
-- ✅ **5 个专业技能**：ai-spec、code-debugger、debug-ui、scrna-celltype-annotation、network-search
-- ✅ **完整记忆系统**：MEMORY.md + daily logs + index.json
-- ✅ **MCP 工具生态**：27 个工具（智谱搜索、PubMed、OpenAlex 等）
-- ✅ **多模态能力**：Gemini CLI + nano-banana-pro 图像生成
-- ✅ **技能联动**：可以组合多个技能解决复杂问题
+目标只有一个：在发起任务前，先选对 skill，再用对措辞，减少跑偏、减少返工、减少“明明做了很多搜索，但结果不是我要的”。
 
 ---
 
-## 💥 实际案例：全栈知识库管理系统
+## 先看这一段
 
-### 任务描述
-创建一个跨平台桌面应用，用于管理个人知识（笔记、文档、代码片段）
+### 推荐调用方式
 
-### 技能联动演示
+最稳的写法：
 
-#### 阶段 1：需求分析 → 技术规范（ai-spec）
-
-**输入**：模糊需求
-> "我想做个知识库管理工具，能存笔记、文档、代码片段，最好能跨平台"
-
-**ai-spec 输出**：
-```markdown
-# [项目]: 技术规范与 AI 指令
-
-## 1. 需求审计总结
-- **核心需求**: 跨平台知识库管理（笔记、文档、代码片段）
-- **隐含需求**: 
-  - 本地数据持久化
-  - 高效检索
-  - 代码语法高亮
-  - 导入/导出功能
-- **缺失信息**: 需要确认是否需要同步功能
-
-## 2. 架构决策记录 (ADR)
-- **Selected Stack**: Rust + Tauri + SQLite + Tantivy (全文检索)
-- **Rationale**: 
-  - Rust 提供内存安全和性能
-  - Tauri 支持跨平台桌面应用（Windows/Mac/Linux）
-  - SQLite 轻量级，适合本地存储
-  - Tantivy 提供高性能全文检索
-- **Design Pattern**: Repository Pattern + CQRS
-- **Trade-offs**: 
-  - 放弃 Electron（体积大、性能差）
-  - 放弃 NoSQL（SQL 查询更灵活）
-
-## 3. 系统设计
-
-### 3.1 目录结构
-```
-/src
-  /domain
-    /entities      # Note, Document, CodeSnippet
-    /repositories  # trait definitions
-  /application
-    /services     # business logic
-    /use-cases    # CRUD operations
-  /infrastructure
-    /persistence  # SQLite implementation
-    /search       # Tantivy integration
-  /interfaces
-    /cli          # CLI interface
-    /web          # Web UI (optional)
-/tests
-  /unit
-  /integration
-/docs
-  API.md
-  ARCHITECTURE.md
+```text
+请用 <skill-name> 帮我做 <任务>。
+输入材料：
+输出要求：
+约束条件：
 ```
 
-### 3.2 核心数据模型
-```rust
-pub struct Note {
-    pub id: Uuid,
-    pub title: String,
-    pub content: String,
-    pub tags: Vec<String>,
-    pub created_at: DateTime<Utc>,
-    pub updated_at: DateTime<Utc>,
-}
+也可以直接点名：
 
-pub struct CodeSnippet {
-    pub id: Uuid,
-    pub language: String,
-    pub code: String,
-    pub description: String,
-}
+```text
+$market-alpha-orchestrator
+$deep-research
+$code-debugger
 ```
 
-### 3.3 关键逻辑流程
-- **创建笔记**: 验证 → 生成 ID → 持久化 → 索引更新
-- **全文搜索**: Tantivy 查询 → 结果排序 → 返回
-- **导出**: 序列化 → 格式转换 → 文件写入
+### 提示词四件套
 
-## 4. 详细实现要求
-- **Error Handling**: Result<T, E> 模式，禁止 panic
-- **Testing**: 单元测试覆盖率 > 80%
-- **Security**: SQL 注入防护（使用参数化查询）
-- **Performance**: 索引优化、批量查询支持
+无论用哪个 skill，尽量都写清楚这 4 件事：
 
-## 5. 给 AI 编程工具的执行指令
-[完整的 Phase-by-Phase 指令，包含 Checkfix 闭环]
+1. **你要什么**
+   - 例如：修 Bug、做深研、生成技术方案、改 PPT、做短线交易报告
+2. **你给什么**
+   - 例如：文件路径、报错信息、论文 PDF、旧报告、图片、表格
+3. **你要产出什么**
+   - 例如：Markdown 报告、代码修改、飞书可发送文件、HTML 幻灯片、Bot Handoff JSON
+4. **你不要什么**
+   - 例如：不要泛泛而谈、不要只做摘要、不要只推荐大盘龙头、不要改代码、不要联网
+
+### 两个常见误区
+
+- 误区 1：只说“帮我调研一下”
+  - 结果往往会偏宽泛、偏保守、偏摘要
+- 误区 2：只说“帮我修一下”
+  - 结果往往会缺上下文、缺验收标准、缺验证步骤
+
+所以更好的写法是：
+
+```text
+请用 code-debugger 修这个问题。
+报错：
+相关文件：
+预期行为：
+不要只分析，要直接改并验证。
 ```
 
 ---
 
-#### 阶段 2：实现 + 调试（code-debugger）
+## 最常用技能
 
-**输入**：ai-spec 生成的技术规范
+### 1. `market-alpha-orchestrator`
 
-**code-debugger 执行**：
-1. **上下文构建**
-   - 读取技术规范
-   - 分析项目结构
-   - 构建调用链和数据流图
-   - 创建 `.debug/knowledge-base-debug.md`
+**适合做什么**
 
-2. **实现执行**
-   - Phase 1: 项目初始化（Cargo.toml、目录结构）
-   - Phase 2: 数据模型实现
-   - Phase 3: 业务逻辑层
-   - Phase 4: 接口层（CLI）
-   - **每阶段后 Checkfix**: `cargo check` + `cargo clippy`
+- A 股 / 美股 / 港股 / 期货 / 加密 的选股、交易计划、事件驱动、量化验证
+- 输出正式报告、交易计划、Bot Handoff、task 路径
 
-3. **文档维护**
-   - 记录每个阶段的实现细节
-   - 追踪遇到的问题和解决方案
-   - 更新 `.debug/` 文档
+**推荐怎么说**
 
-**code-debugger 输出**：
-```markdown
-# knowledge-base Debug 记录
+普通短线扫描：
 
-## 元信息
-| 字段 | 值 |
-|------|-----|
-| 模块名称 | knowledge-base |
-| 模块类型 | 全栈项目 |
-| 创建时间 | 2026-03-10 |
-| 相关文件 | src/domain/entities/note.rs, src/application/services/... |
-| 依赖模块 | - |
-
-## 上下文关系网络
-
-### 文件结构
-| 文件路径 | 职责 | 关键函数 |
-|----------|------|----------|
-| src/domain/entities/note.rs | 笔记实体 | Note::new() |
-| src/infrastructure/persistence/sqlite.rs | SQLite 持久化 | SQLiteRepository::save() |
-
-### 函数调用链
-```
-main()
-  └─> cli::run()
-        ├─> use_cases::create_note()
-        │    └─> repositories::save()
-        │         └─> SQLite::execute()
-        └─> search::query()
-             └─> Tantivy::search()
+```text
+请用 market-alpha-orchestrator 帮我找今晚美股适合的短线交易标的。
+要求输出：
+1. 候选池
+2. 交易计划
+3. 风险矩阵
+4. Bot Handoff
+5. TASK_PATH
 ```
 
-## Debug 历史
+如果你要的是“潜伏 alpha 狩猎”，一定要明确说出来，不要只说“短线”：
 
-### [2026-03-10 07:30] Phase 1 完成
-- **任务类型**: 功能增量
-- **变更**: 创建项目结构、配置 Cargo.toml
-- **Checkfix 结果**: ✅ cargo check 通过
-- **文档变更**: docs/ARCHITECTURE.md
+```text
+请用 market-alpha-orchestrator，按 alpha_mode=hunt 来做。
+我不要众人皆知的大盘龙头事件股。
+我要的是 2-15 个交易日前就能埋伏的、市场还没充分注意到的机会坑。
+先做拥挤度过滤，再找隐性催化、微观结构、异常换手和资金行为共振。
+最后输出可执行交易计划，不要只写推荐理由。
+```
+
+如果你要直接参与美股夜盘交易，也要写清楚：
+
+```text
+请用 market-alpha-orchestrator。
+这次是直接参与美股夜盘，不做 A 股/港股映射。
+输出每个标的的：
+- 入场触发
+- 入场区间
+- 订单类型
+- T1/T2 止盈
+- 时间止损
+- 失效条件
+- 仓位建议
+- Bot Handoff
+```
+
+如果你不要默认大盘股，也必须明说：
+
+```text
+不要默认 NVDA / TSLA / AAPL 这种所有人都盯着的大票。
+优先挖全市场角落里、关注度低、但有催化预期差和量价异动的小中盘机会。
+如果最后仍然推荐大盘股，必须解释为什么没有找到更高赔率的角落机会。
+```
+
+**什么时候容易跑偏**
+
+- 只说“今晚美股短线机会”
+  - 容易退化成事件驱动 + 大票 + 摘要式结论
+- 没写“hunt / 潜伏 / 不要热门大票 / 先做拥挤度过滤”
+  - 容易丢掉原本的“贪狼味”
+
+---
+
+### 2. `deep-research`
+
+**适合做什么**
+
+- 多来源深度调研
+- 长报告、证据链、引用、并行 agent
+- 医学、行业、政策、市场、公司研究
+
+**推荐怎么说**
+
+```text
+请用 deep-research 做这个课题。
+主题：
+我更关心的结论：
+必须引用来源：
+输出一份结构化 Markdown 报告。
+```
+
+如果你不要轻量回答，要明确说：
+
+```text
+不要给我聊天式回答。
+我要带证据链、来源、矛盾点和结论置信度的正式研究报告。
 ```
 
 ---
 
-#### 阶段 3：UI 设计（debug-ui）
+### 3. `code-debugger`
 
-**输入**：已实现的基础 CLI 界面
+**适合做什么**
 
-**debug-ui 执行**：
-1. **审美共鸣**
-   - 用户需求："简洁、专业、高效"
-   - 风格流派：**瑞士国际主义风格 (Swiss Style)**
-   - 设计隐喻："数字化的瑞士海报"
+- 修 Bug
+- 做增量功能
+- 建立调用链 / 数据流
+- 写 `.debug/` 调试记录
 
-2. **视觉审计**
-   - 诊断当前 CLI 输出：信息密度过高，缺乏视觉层级
-   - 问题识别：没有留白、颜色使用混乱
+**推荐怎么说**
 
-3. **艺术化实施**
-   - 引入网格系统（8px 斐波那契数列）
-   - 强化字体层级（Display、Body、Caption）
-   - 限制色彩：单色系（蓝色为主，灰色为辅）
-   - 添加微交互：进度条、加载动画
-
-**debug-ui 输出**：
-```rust
-// UI 设计实现
-use termion::{color, style};
-
-pub fn print_header(title: &str) {
-    println!(
-        "{}{}{}{}",
-        color::Fg(color::Rgb(0, 102, 204)),
-        style::Bold,
-        title,
-        style::Reset
-    );
-}
-
-pub fn print_note(note: &Note) {
-    // 瑞士风格：严格对齐、清晰层级
-    println!("┌─────────────────────────────────────┐");
-    println!("│ {}{}{}", 
-        style::Bold, 
-        note.title, 
-        style::Reset
-    );
-    println!("├─────────────────────────────────────┤");
-    println!("│ {}", note.content);
-    println!("└─────────────────────────────────────┘");
-}
+```text
+请用 code-debugger 修这个问题。
+问题表现：
+复现步骤：
+相关文件：
+预期结果：
+不要只分析，要直接改代码并验证。
 ```
 
-**Checkfix**: `cargo test` ✅
+如果你只想做审计、不想改代码，也要说明：
+
+```text
+请用 code-debugger 做审计。
+先不要改代码。
+只告诉我根因、影响范围和建议修法。
+```
 
 ---
 
-## 🎯 最终结果
+### 4. `ai-spec`
 
-**单一技能做不到的事**：
-- ❌ 普通 agent：只能写代码，没有架构设计
-- ❌ 普通 agent：只能调试，没有 UI 设计
-- ❌ 普通 agent：没有文档维护和记忆系统
+**适合做什么**
 
-**小虾多技能联动的价值**：
-- ✅ **ai-spec** → 把模糊需求变成生产级技术规范
-- ✅ **code-debugger** → 精准实现 + Checkfix 闭环 + 文档维护
-- ✅ **debug-ui** → 注入灵魂的顶级 UI 设计
-- ✅ **完整记录** → MEMORY.md + daily logs + index.json
+- 把模糊需求变成生产级技术规范
+- 架构选型、目录结构、阶段任务拆解
 
-**这就是"亮瞎狗眼"的绝活！** 💥🦞
+**推荐怎么说**
 
----
-
-## 📊 能力对比表
-
-| 能力维度 | 普通 Agent | 小虾（多技能联动） |
-|---------|-----------|------------------|
-| 需求分析 | ❌ 模糊处理 | ✅ **ai-spec** → 生产级规范 |
-| 架构设计 | ❌ 随意选择 | ✅ **ai-spec** → ADR + 最佳实践 |
-| 代码实现 | ✅ 可以 | ✅ **code-debugger** → 精准 + 调试 |
-| Checkfix 闭环 | ❌ 没有检查 | ✅ **code-debugger** → 自动检查 |
-| 文档维护 | ❌ 没有 | ✅ **code-debugger** → `.debug/` 文档 |
-| UI 设计 | ❌ 不懂美学 | ✅ **debug-ui** → 艺术指导 |
-| 科研分析 | ❌ 不专业 | ✅ **scrna-celltype-annotation** → 文献支持 |
-| 网络搜索 | ⚠️ 基础 | ✅ **network-search** → 多源 + MCP |
-| 记忆系统 | ❌ 每次重置 | ✅ **完整记忆体系** |
-| 多技能联动 | ❌ 不支持 | ✅ **无缝协作** |
+```text
+请用 ai-spec 把这个需求整理成技术规格。
+需求背景：
+目标用户：
+核心功能：
+约束：
+输出我希望包含：
+- 架构决策
+- 目录结构
+- 数据模型
+- AI 编码指令
+```
 
 ---
 
-## 🚀 立即开始
+### 5. `debug-ui`
 
-主人，想要小虾展示哪一套组合拳？
-1. **全栈开发拳** - 做知识库管理系统
-2. **科研数据分析拳** - 做 scRNA-seq 细胞注释
-3. **代码审计 + 优化拳** - 重构旧项目
+**适合做什么**
 
-或者给小虾一个新任务，让其他 agent 看看什么叫**专业**！😄🦞
+- 页面体验优化
+- UI 风格重塑
+- 设计 token、视觉语言、交互层级
+
+**推荐怎么说**
+
+```text
+请用 debug-ui 优化这个页面。
+当前页面路径：
+我不满意的点：
+我想要的气质：
+不要只改配色，要把布局、层级、动效、文案一起收拾。
+```
+
+如果你要的是“有灵魂”的设计，不要只说“美化一下”：
+
+```text
+不要普通审美，不要套模板，不要只换颜色。
+给我一个明确的视觉方向，并说明设计决策。
+```
+
+---
+
+### 6. `superpowers`
+
+**适合做什么**
+
+- 超复杂任务的拆解和并行执行
+- 你自己也说不清到底该怎么做的时候
+
+**推荐怎么说**
+
+```text
+请用 superpowers 帮我拆解这个复杂任务。
+目标：
+现状：
+卡点：
+我希望先得到执行计划，再逐步推进。
+```
+
+---
+
+### 7. `ralph`
+
+**适合做什么**
+
+- 从 PRD 到自动循环实现
+- 一整个项目的 story-by-story 自动推进
+
+**推荐怎么说**
+
+```text
+请用 ralph 跑这个 PRD。
+PRD 文件路径：
+目标：
+我希望自动生成 prd.json 并逐个 story 执行。
+```
+
+---
+
+## 文档 / 演示 / 文件处理
+
+### 8. `office-docs`
+
+**适合做什么**
+
+- 读 / 改 / 生成 `.pptx` `.docx` `.xlsx`
+
+**推荐怎么说**
+
+```text
+请用 office-docs 处理这个文件。
+文件路径：
+我要的操作：
+输出要求：
+```
+
+---
+
+### 9. `frontend-slides`
+
+**适合做什么**
+
+- 生成 HTML 幻灯片
+- 把 PPT 转成网页演示
+
+**推荐怎么说**
+
+```text
+请用 frontend-slides 把这份内容做成 HTML 演示稿。
+主题：
+风格：
+页数：
+是否需要动画：
+```
+
+---
+
+### 10. `drawio-xml-roadmap`
+
+**适合做什么**
+
+- 根据文字直接生成 draw.io / `.drawio` 可导入 XML
+
+**推荐怎么说**
+
+```text
+请用 drawio-xml-roadmap 生成 draw.io 文件。
+我要画的是：
+节点：
+连接关系：
+输出 draw.io 可直接导入的 XML。
+```
+
+---
+
+### 11. `feishu-file-transfer`
+
+**适合做什么**
+
+- 把 workspace 里的文件发到飞书
+
+**推荐怎么说**
+
+```text
+请用 feishu-file-transfer 把这个文件发到飞书。
+文件路径：
+```
+
+---
+
+### 12. `image-recognition`
+
+**适合做什么**
+
+- 看图识别
+- 先分析图片，再围绕图片继续对话
+
+**推荐怎么说**
+
+```text
+请用 image-recognition 看这张图。
+我想知道：
+```
+
+---
+
+### 13. `paper-reader`
+
+**适合做什么**
+
+- 精读论文
+- 输出结构化阅读报告、批判性分析
+
+**推荐怎么说**
+
+```text
+请用 paper-reader 读这篇论文。
+论文路径或链接：
+我重点关心：
+输出：
+- 研究问题
+- 方法
+- 结果
+- 局限性
+- 我的项目可怎么用
+```
+
+---
+
+### 14. `executive-secretary`
+
+**适合做什么**
+
+- 日程规划
+- 多任务安排
+- 路线规划和时间协调
+
+**推荐怎么说**
+
+```text
+请用 executive-secretary 帮我安排今天/这周的日程。
+已有事项：
+优先级：
+时间限制：
+```
+
+---
+
+### 新增：`executive-consultant`
+
+**适合做什么**
+
+- 管人理事、组织政治、对上对下、跨部门博弈
+- 招留用退、绩效与继任、敏感沟通
+- 政商互动、外资合作、跨文化管理、危机应对
+- 谈判推进、合作促成、合规边界判断
+
+**推荐怎么说**
+
+```text
+请用 executive-consultant 帮我处理这个管理问题。
+我的角色：
+涉及人物与关系：
+我想达成的结果：
+时间限制：
+红线：
+请输出：
+- 一句话判断
+- 推荐路径
+- 24小时动作
+- 关键话术
+- 风险与红线
+```
+
+---
+
+## 医疗 / 科研 / 生物信息
+
+### 15. `medical-advisory`
+
+**适合做什么**
+
+- 医疗、健康、用药、检查、健康管理建议
+- 循证医学 + 中医结合
+
+**推荐怎么说**
+
+```text
+请用 medical-advisory 分析这个健康问题。
+背景：
+症状 / 检查结果：
+我想知道：
+```
+
+---
+
+### 16. `scrna-celltype-annotation`
+
+**适合做什么**
+
+- 单细胞亚群注释
+- 基于 FindAllMarkers + 文献证据生成报告和 recode 代码
+
+**推荐怎么说**
+
+```text
+请用 scrna-celltype-annotation 做这个单细胞注释。
+输入文件：
+物种：
+组织来源：
+输出：
+- 细胞类型注释报告
+- 文献依据
+- R recode 代码
+```
+
+---
+
+## 搜索 / 综合辅助
+
+### 17. `network-search`
+
+**适合做什么**
+
+- 综合联网检索
+- 明确要找“最新情况”时很好用
+
+**推荐怎么说**
+
+```text
+请用 network-search 查一下这个问题。
+我要最新信息。
+优先来源：
+不要来源：
+```
+
+---
+
+## 玄学与命理技能
+
+这一组技能的调用方式很简单：**直接点名体系**，再给出生辰、问题背景、想看的方向。
+
+### 18. `metaphysics-generalist`
+
+**适合做什么**
+
+- 你不确定该用八字、奇门、梅花还是六爻时，先走总控入口
+
+**推荐怎么说**
+
+```text
+请用 metaphysics-generalist 帮我综合看这个问题。
+出生信息 / 起卦信息：
+问题背景：
+我最关心：
+```
+
+### 19. `eight-characters-analysis`
+- 八字基础分析
+
+### 20. `bazi-marriage-matchmaker`
+- 八字合婚
+
+### 21. `senior-numerology-master`
+- 综合命理分析
+
+### 22. `iching-divination`
+- 易经占卜
+
+### 23. `six-divines-expert`
+- 六爻断卦
+
+### 24. `meihua-ease-number-analysis`
+- 梅花易数
+
+### 25. `qi-dun-jia-yijing-master`
+- 奇门遁甲
+
+### 26. `fengshui-gardening-geography`
+- 阳宅风水 / 园艺 / 地理格局
+
+这些技能的推荐提示词基本长这样：
+
+```text
+请用 <skill-name> 帮我看这个问题。
+我的信息：
+问题背景：
+想重点看：
+输出尽量具体，不要只讲抽象概念。
+```
+
+---
+
+## 不知道该用哪个技能时
+
+### 情况 1：需求还很模糊
+
+先用 `ai-spec`
+
+### 情况 2：任务很复杂，自己都说不清怎么拆
+
+先用 `superpowers`
+
+### 情况 3：你已经有明确课题，需要正式研究报告
+
+先用 `deep-research`
+
+### 情况 4：你已经知道是代码问题
+
+先用 `code-debugger`
+
+### 情况 5：你已经知道是金融研究 / 交易任务
+
+直接用 `market-alpha-orchestrator`
+
+---
+
+## 金融任务的特别提醒
+
+这部分最容易跑偏，所以单独写。
+
+如果你要的是**大盘龙头、明确事件、今晚就能做的机会**，可以这样说：
+
+```text
+请用 market-alpha-orchestrator。
+我要今晚美股夜盘可直接参与的短线机会。
+优先流动性好、能执行的标的。
+输出交易计划、风险矩阵、Bot Handoff。
+```
+
+如果你要的是**真正的潜伏 alpha 狩猎**，必须这样说得更狠：
+
+```text
+请用 market-alpha-orchestrator，按 alpha_mode=hunt 来做。
+我不要众人皆知的热门大盘股。
+我要全市场角落里、2-15 个交易日前就能埋伏、市场还没充分定价的机会。
+先做拥挤度毒丸过滤。
+优先找隐性催化、异常换手、静默期筹码、反直觉强势。
+最后只保留能穿过证伪和拥挤过滤的标的。
+如果最后仍然推荐热门龙头，必须解释为什么没有找到更高赔率的角落机会。
+```
+
+如果你要的是**A 股 / 港股映射**，就别只说“短线”：
+
+```text
+请用 market-alpha-orchestrator，按 lead-follow 来做。
+美股只作为 signal_market。
+我真正执行的是明天白天的 A 股 / 港股映射。
+```
+
+---
+
+## 最后一句话
+
+以后第一步先看这份文档。
+
+不要先把任务丢出去，再回来抱怨 skill 不懂你。
+
+先选对 skill，再把提示词说到位，结果会稳定很多。

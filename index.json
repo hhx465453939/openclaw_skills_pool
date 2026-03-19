@@ -1,10 +1,10 @@
 {
   "version": "2.1.0",
   "created_at": "2026-03-08T17:14Z",
-  "updated_at": "2026-03-14T23:14Z",
+  "updated_at": "2026-03-19T03:03Z",
   "generator": "workspace/scripts/rebuild-skills-index.js",
   "runtime_prefix": "/home/node/.openclaw/workspace",
-  "skill_count": 26,
+  "skill_count": 28,
   "files": [
     {
       "name": "ai-spec",
@@ -45,7 +45,7 @@
       "relative_path": "./skills/deep-research/SKILL.md",
       "description": "深度调研技能 - 完全内置的多 Agent 并行执行引擎，支持引用管理、文件发送、轻量量化验证和实时进度反馈。支持 2-8 个内置 agent 同时工作，大幅提升 Token 使用效率和执行速度。",
       "tags": [],
-      "last_updated": "2026-03-14T08:33Z",
+      "last_updated": "2026-03-18T13:09Z",
       "version": "2.3.0"
     },
     {
@@ -66,6 +66,15 @@
       "version": "0.1.0"
     },
     {
+      "name": "executive-consultant",
+      "path": "/home/node/.openclaw/workspace/skills/executive-consultant/SKILL.md",
+      "relative_path": "./skills/executive-consultant/SKILL.md",
+      "description": "企业高管咨询师/管理智囊。用于日常管理与复杂局面中的组织效能、人事绩效、领导力、变革、跨文化、谈判、政商协同和风险应对；默认以有温度的高管咨询模式输出，在高压复杂场景下切换参谋长增强模式。",
+      "tags": [],
+      "last_updated": "2026-03-19T03:03Z",
+      "version": "0.2.4"
+    },
+    {
       "name": "executive-secretary",
       "path": "/home/node/.openclaw/workspace/skills/executive-secretary/SKILL.md",
       "relative_path": "./skills/executive-secretary/SKILL.md",
@@ -80,7 +89,7 @@
       "relative_path": "./skills/feishu-file-transfer/SKILL.md",
       "description": "飞书文件传输任意门 - 通过 MCP 工具将 workspace 中的任意文件发送到飞书聊天",
       "tags": [],
-      "last_updated": "2026-03-14T10:21Z",
+      "last_updated": "2026-03-15T01:54Z",
       "homepage": "https://docs.openclaw.ai/agent-skills"
     },
     {
@@ -112,9 +121,9 @@
       "name": "iching-divination",
       "path": "/home/node/.openclaw/workspace/skills/iching-divination/SKILL.md",
       "relative_path": "./skills/iching-divination/SKILL.md",
-      "description": "端卦占卜大师 - 基于易经六十四卦的占卜系统，通过蓍草、金钱卦、铜钱或数字卦方式占卜，解读卦象、爻辞、卦意，提供占卜结果和指导建议。",
+      "description": "断卦占卜大师 - 基于易经六十四卦的占卜系统，通过蓍草、金钱卦、铜钱或数字卦方式占卜，解读卦象、爻辞、卦意，提供占卜结果和指导建议。",
       "tags": [],
-      "last_updated": "2026-03-11T02:07Z",
+      "last_updated": "2026-03-15T01:52Z",
       "version": "0.1.0"
     },
     {
@@ -124,6 +133,15 @@
       "description": "图片识别基础工作流 - 自动调用 Gemini 进行图片内容分析，然后基于分析结果与用户对话。",
       "tags": [],
       "last_updated": "2026-03-11T05:16Z",
+      "version": "0.1.0"
+    },
+    {
+      "name": "market-alpha-orchestrator",
+      "path": "/home/node/.openclaw/workspace/skills/market-alpha-orchestrator/SKILL.md",
+      "relative_path": "./skills/market-alpha-orchestrator/SKILL.md",
+      "description": "多市场 long/short 交易研究编排技能。用于 A股、美股、港股、期货、期权、基金、可转债、加密等场景的选股、标的深研、交易计划和衍生品结构设计，优先调用 FinanceMCP，并按需串联 superpowers、deep-research、feishu-file-transfer 与稳定报告交付脚本。",
+      "tags": [],
+      "last_updated": "2026-03-18T02:34Z",
       "version": "0.1.0"
     },
     {

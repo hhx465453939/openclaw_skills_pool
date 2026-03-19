@@ -44,6 +44,18 @@ bash workspace/scripts/deep-research-bootstrap.sh "<task-slug>" "<reason>" \
 bash workspace/scripts/skill-prepare-batch.sh deep-research default "" "<task-slug>"
 ```
 
+如果任务涉及金融市场、选股、财报、新闻、行情、期权或其他高时效交易 intelligence，额外读取：
+
+- `references/finance-timeliness-playbook.md`
+
+并把 `Data Freshness & Completeness` 与 `Precision level` 当成硬合同，而不是建议项。
+
+`deep-research` 的 `report-generator` 默认输出语言现在应为：
+
+- `Simplified Chinese (zh-CN)`
+
+只有当用户明确要求英文时，才切换到英文。
+
 ---
 
 ## 核心理念
@@ -85,6 +97,28 @@ bash workspace/scripts/skill-prepare-batch.sh deep-research default "" "<task-sl
 - `workspace/skills/deep-research/scripts/research_quant_toolkit.py`
 - `workspace/skills/deep-research/scripts/quant_scratchpad_template.py`
 - `workspace/skills/deep-research/references/quant-research-playbook.md`
+
+## 金融高时效任务附加规则
+
+当任务是：
+
+- 市场研究
+- 选股 / 选行业 / 选合约
+- 财报 / 新闻 / 行情 / 技术面 / 资金面
+- 真实交易方向判断
+
+必须额外遵守：
+
+1. 最新市场状态优先于旧新闻叙事。
+2. 历史信息必须串成 timeline，不能直接当成当前状态。
+3. 若关键最新数据缺失，必须降级为：
+   - `DIRECTIONAL_ONLY`
+   - `WATCHLIST`
+   - `NOT_EXECUTABLE`
+4. 没有真实期权链，不得给 precise strike / expiry / IV judgement。
+5. 模板 quant 输入不得参与真实交易结论。
+6. 若 mixed freshness 风险不是 `LOW`，或 timeline integrity 不是 `COHERENT`，则不得输出 `EXECUTABLE`。
+7. 新闻、财报、政策、地缘政治等事件必须结构化落盘，并在最终报告中体现为 `事件驱动因子`，不能只藏在 worklog。
 
 ---
 
@@ -338,9 +372,12 @@ python3 workspace/skills/deep-research/scripts/research_quant_toolkit.py calc \
 1. 整合所有 Agent 的结果
 2. 生成带 `[数字]` 引用标记的正文
 3. 生成完整的 Reference Section
-4. 保存到 `workspace/report/[主题]_[时间戳].md`
-5. 立即运行 `workspace/scripts/deliver-report.sh --path <report>`，产出可直接用于聊天交付的 `FILEPATH:./...`
-6. 优先通过消息工具的 `filePath` 参数发送；如果当前回合只能输出文本，则至少原样输出 `FILEPATH:./...`
+4. 如果是金融高时效任务，固定增加 `## Data Freshness & Completeness`
+5. 金融高时效任务在交付前先运行：
+   - `python3 workspace/scripts/finance-intel-report-gate.py --report <report> --task-slug <slug>`
+6. 保存到 `workspace/report/[主题]_[时间戳].md`
+7. 统一优先运行 `workspace/scripts/deep-research-deliver.sh --path <report>`；finance-sensitive 报告会先自动判断是否需要过 `finance-intel-report-gate.py`
+8. 优先通过消息工具的 `filePath` 参数发送；如果当前回合只能输出文本，则至少原样输出 `FILEPATH:./...`
 
 **报告结构**：
 ```markdown
@@ -366,6 +403,25 @@ python3 workspace/skills/deep-research/scripts/research_quant_toolkit.py calc \
 - [结论]
 
 **可信度评估**: [高/中/低]
+
+---
+
+## Data Freshness & Completeness
+
+- Market data as of:
+- News data as of:
+- Options data as of:
+- Options data status:
+- Timeline span:
+- Completeness status:
+- Precision level:
+- Critical missing fields:
+- Fallback sources used:
+- Mixed freshness risk:
+- Timeline integrity:
+- Open interest status:
+- Bid-ask status:
+- Expiry-window fit:
 
 ---
 
