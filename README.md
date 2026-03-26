@@ -46,23 +46,26 @@ openclaw_skills_pool/
 
 ## 技能列表
 
-当前扫描到 `SKILL.md`：**28** 个（其中 `frontend-slides/references/SKILL.md` 为内嵌参考技能）；主技能目录清单为 **27** 个（与下方列表对齐）。
+当前扫描到 `SKILL.md`：**36** 个（其中 `frontend-slides/references/SKILL.md` 为内嵌参考技能）；主技能目录清单为 **35** 个（与下方列表对齐）。
 
 ### 核心开发与方法论
 
 - [superpowers](./superpowers/SKILL.md)（v2.0.0）
+- [deep-research](./deep-research/SKILL.md)（v2.3.0）
+- [ralph](./ralph/SKILL.md)
 - [code-debugger](./code-debugger/SKILL.md)
 - [ai-spec](./ai-spec/SKILL.md)
+- [proactive-agent](./proactive-agent/SKILL.md)
+- [self-improving-ontology](./self-improving-ontology/SKILL.md)
 - [debug-ui](./debug-ui/SKILL.md)
-- [ralph](./ralph/SKILL.md)
 
 ### 深度研究与分析
 
-- [deep-research](./deep-research/SKILL.md)（v2.3.0）
 - [paper-reader](./paper-reader/SKILL.md)
 - [network-search](./network-search/SKILL.md)
 - [market-alpha-orchestrator](./market-alpha-orchestrator/SKILL.md)
 - [scrna-celltype-annotation](./scrna-celltype-annotation/SKILL.md)
+- [nsfc-proposal-advisor](./nsfc-proposal-advisor/SKILL.md)
 
 ### 办公与效率工具
 
@@ -71,10 +74,12 @@ openclaw_skills_pool/
 - [executive-consultant](./executive-consultant/SKILL.md)
 - [feishu-file-transfer](./feishu-file-transfer/SKILL.md)
 - [image-recognition](./image-recognition/SKILL.md)
+- [markdown-proxy](./markdown-proxy/SKILL.md)
 - [frontend-slides](./frontend-slides/SKILL.md)
 - [drawio-xml-roadmap](./drawio-xml-roadmap/SKILL.md)
+- [web-access](./web-access/SKILL.md)
 
-### 垂直领域技能（命理/医疗等）
+### 垂直领域技能（命理/医疗/法律等）
 
 - [medical-advisory](./medical-advisory/SKILL.md)
 - [metaphysics-generalist](./metaphysics-generalist/SKILL.md)
@@ -86,6 +91,9 @@ openclaw_skills_pool/
 - [six-divines-expert](./six-divines-expert/SKILL.md)
 - [qi-dun-jia-yijing-master](./qi-dun-jia-yijing-master/SKILL.md)
 - [fengshui-gardening-geography](./fengshui-gardening-geography/SKILL.md)
+- [thesis-writing-mentor](./thesis-writing-mentor/SKILL.md)
+- [global-legal-counsel](./global-legal-counsel/SKILL.md)
+- [external-negotiation-master](./external-negotiation-master/SKILL.md)
 
 ---
 

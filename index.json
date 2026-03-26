@@ -1,14 +1,14 @@
 {
   "version": "2.1.0",
   "created_at": "2026-03-08T17:14Z",
-  "updated_at": "2026-03-25T09:22Z",
+  "updated_at": "2026-03-26T04:32:53Z",
   "generator": "workspace/scripts/rebuild-skills-index.js",
-  "runtime_prefix": "/home/node/.openclaw/workspace",
+  "runtime_prefix": "",
   "skill_count": 36,
   "files": [
     {
       "name": "ai-spec",
-      "path": "/home/node/.openclaw/workspace/skills/ai-spec/SKILL.md",
+      "path": "./skills/ai-spec/SKILL.md",
       "relative_path": "./skills/ai-spec/SKILL.md",
       "description": "将用户需求转化为生产级技术规范与 AI 编码指令。适用于需求不清晰、架构选型、生成完整技术规格或可执行任务清单时。",
       "tags": [],
@@ -16,7 +16,7 @@
     },
     {
       "name": "bazi-marriage-matchmaker",
-      "path": "/home/node/.openclaw/workspace/skills/bazi-marriage-matchmaker/SKILL.md",
+      "path": "./skills/bazi-marriage-matchmaker/SKILL.md",
       "relative_path": "./skills/bazi-marriage-matchmaker/SKILL.md",
       "description": "八字合婚大师 - 基于日支密码和天干五合的合婚分析专家。擅长整体取象应象法，挖掘八字深层的引力密码，揭示婚姻的真相。",
       "tags": [],
@@ -25,7 +25,7 @@
     },
     {
       "name": "code-debugger",
-      "path": "/home/node/.openclaw/workspace/skills/code-debugger/SKILL.md",
+      "path": "./skills/code-debugger/SKILL.md",
       "relative_path": "./skills/code-debugger/SKILL.md",
       "description": "基于深度上下文的智能代码调试与增量开发。用于 Bug 定位与修复、增量功能开发、技术栈 Checkfix 闭环及 .debug 文档维护。",
       "tags": [],
@@ -33,7 +33,7 @@
     },
     {
       "name": "debug-ui",
-      "path": "/home/node/.openclaw/workspace/skills/debug-ui/SKILL.md",
+      "path": "./skills/debug-ui/SKILL.md",
       "relative_path": "./skills/debug-ui/SKILL.md",
       "description": "name: debug-ui",
       "tags": [],
@@ -41,7 +41,7 @@
     },
     {
       "name": "deep-research",
-      "path": "/home/node/.openclaw/workspace/skills/deep-research/SKILL.md",
+      "path": "./skills/deep-research/SKILL.md",
       "relative_path": "./skills/deep-research/SKILL.md",
       "description": "深度调研技能 - 完全内置的多 Agent 并行执行引擎，支持引用管理、文件发送、轻量量化验证和实时进度反馈。支持 2-8 个内置 agent 同时工作，大幅提升 Token 使用效率和执行速度。",
       "tags": [],
@@ -50,7 +50,7 @@
     },
     {
       "name": "drawio-xml-roadmap",
-      "path": "/home/node/.openclaw/workspace/skills/drawio-xml-roadmap/SKILL.md",
+      "path": "./skills/drawio-xml-roadmap/SKILL.md",
       "relative_path": "./skills/drawio-xml-roadmap/SKILL.md",
       "description": "Draw.io XML 路线图/流程图设计官 —— 将文字版流程/路线图系统性转换为符合 draw.io .drawio 规范的 mxfile/mxCell XML，避免 \"Invalid file data\" 等解析错误，直接可导入 draw.io Desktop。",
       "tags": [],
@@ -58,7 +58,7 @@
     },
     {
       "name": "eight-characters-analysis",
-      "path": "/home/node/.openclaw/workspace/skills/eight-characters-analysis/SKILL.md",
+      "path": "./skills/eight-characters-analysis/SKILL.md",
       "relative_path": "./skills/eight-characters-analysis/SKILL.md",
       "description": "八字分析专家 - 基于传统中国易学和命理学，通过天干地支、五行生克等理论推算八字命理。提供专业的命理分析、运势预测、五行调理建议。",
       "tags": [],
@@ -67,7 +67,7 @@
     },
     {
       "name": "executive-consultant",
-      "path": "/home/node/.openclaw/workspace/skills/executive-consultant/SKILL.md",
+      "path": "./skills/executive-consultant/SKILL.md",
       "relative_path": "./skills/executive-consultant/SKILL.md",
       "description": "企业高管咨询师/管理智囊。用于日常管理与复杂局面中的组织效能、人事绩效、领导力、变革、跨文化、谈判、政商协同和风险应对；默认以有温度的高管咨询模式输出，在高压复杂场景下切换参谋长增强模式。",
       "tags": [],
@@ -76,7 +76,7 @@
     },
     {
       "name": "executive-secretary",
-      "path": "/home/node/.openclaw/workspace/skills/executive-secretary/SKILL.md",
+      "path": "./skills/executive-secretary/SKILL.md",
       "relative_path": "./skills/executive-secretary/SKILL.md",
       "description": "高级行政秘书技能 - 高级别行政领导秘书水平的系统化时间管理专家。擅长处理复杂多变的日程安排，可调用高德地图 MCP 进行路线规划与通勤时间估算，统筹兼顾工作与生活各个层面的时间规划需求。",
       "tags": [],
@@ -85,7 +85,7 @@
     },
     {
       "name": "external-negotiation-master",
-      "path": "/home/node/.openclaw/workspace/skills/external-negotiation-master/SKILL.md",
+      "path": "./skills/external-negotiation-master/SKILL.md",
       "relative_path": "./skills/external-negotiation-master/SKILL.md",
       "description": "对外谈判大师 / 超级说客角色。用于供应商、客户、甲方、投资人、合作方、渠道、信息咨询、销售、市场、BD、政府与机构接口等一切对外沟通、谈判、推进、报价、压价、砍价、催款、回款、条款博弈、利益交换、分歧处理、话术设计与会谈准备场景。触发词包括：谈判、沟通、话术、怎么说、怎么回、帮我谈、压价、砍价、报价、催回款、推进合作、跟进、要价、让步、试探、反击、发给对方、电话怎么打、开会怎么讲、站在我这边、还有什么我没想到。默认站在当前委托方的合法利益一侧，目标是提升获利、成交率、主动权和长期筹码，而不是做空泛沟通学。",
       "tags": [],
@@ -93,7 +93,7 @@
     },
     {
       "name": "feishu-file-transfer",
-      "path": "/home/node/.openclaw/workspace/skills/feishu-file-transfer/SKILL.md",
+      "path": "./skills/feishu-file-transfer/SKILL.md",
       "relative_path": "./skills/feishu-file-transfer/SKILL.md",
       "description": "飞书文件传输任意门 - 通过 MCP 工具将 workspace 中的任意文件发送到飞书聊天",
       "tags": [],
@@ -102,7 +102,7 @@
     },
     {
       "name": "fengshui-gardening-geography",
-      "path": "/home/node/.openclaw/workspace/skills/fengshui-gardening-geography/SKILL.md",
+      "path": "./skills/fengshui-gardening-geography/SKILL.md",
       "relative_path": "./skills/fengshui-gardening-geography/SKILL.md",
       "description": "阳宅风水园艺地理专家 - 结合传统风水理论、园艺学和地理学的综合环境分析专家。擅长分析住宅、办公室、园林、城市环境的能量流动、环境布局、景观设计，提供基于风水理论的环境调理建议和园艺设计方案。",
       "tags": [],
@@ -111,7 +111,7 @@
     },
     {
       "name": "frontend-slides",
-      "path": "/home/node/.openclaw/workspace/skills/frontend-slides/references/SKILL.md",
+      "path": "./skills/frontend-slides/references/SKILL.md",
       "relative_path": "./skills/frontend-slides/references/SKILL.md",
       "description": "Create stunning, animation-rich HTML presentations from scratch or by converting PowerPoint files. Use when the user wants to build a presentation, convert a PPT/PPTX to web, or create slides for a talk/pitch. Helps non-designers discover their aesthetic through visual exploration rather than abstract choices.",
       "tags": [],
@@ -119,7 +119,7 @@
     },
     {
       "name": "frontend-slides",
-      "path": "/home/node/.openclaw/workspace/skills/frontend-slides/SKILL.md",
+      "path": "./skills/frontend-slides/SKILL.md",
       "relative_path": "./skills/frontend-slides/SKILL.md",
       "description": "创建零依赖、动画丰富的 HTML 演示文稿。支持从零创建、从 PowerPoint 转换，或增强现有 HTML 演示。帮助非设计师通过视觉探索发现美学偏好，而非抽象选择。",
       "tags": [],
@@ -127,7 +127,7 @@
     },
     {
       "name": "global-legal-counsel",
-      "path": "/home/node/.openclaw/workspace/skills/global-legal-counsel/SKILL.md",
+      "path": "./skills/global-legal-counsel/SKILL.md",
       "relative_path": "./skills/global-legal-counsel/SKILL.md",
       "description": "全球顶级律师/总法律顾问角色。用于法律咨询、诉讼与仲裁策略、起诉/应诉/抗辩设计、诈骗追偿、不当得利、证据梳理、合规整改、监管应对、合同谈判、交易结构、股权治理、劳动争议、数据与隐私、跨境风险、内部调查等场景。触发词包括：律师、法务、合规、起诉、应诉、抗辩、仲裁、监管、调查、冻结、诈骗、追偿、地下钱庄、合同、条款、发律师看、站在我这边、帮我做决策、还有什么风险我没想到。默认站在当前委托方的合法利益一侧，不做空泛中立综述。",
       "tags": [],
@@ -135,7 +135,7 @@
     },
     {
       "name": "iching-divination",
-      "path": "/home/node/.openclaw/workspace/skills/iching-divination/SKILL.md",
+      "path": "./skills/iching-divination/SKILL.md",
       "relative_path": "./skills/iching-divination/SKILL.md",
       "description": "断卦占卜大师 - 基于易经六十四卦的占卜系统，通过蓍草、金钱卦、铜钱或数字卦方式占卜，解读卦象、爻辞、卦意，提供占卜结果和指导建议。",
       "tags": [],
@@ -144,7 +144,7 @@
     },
     {
       "name": "image-recognition",
-      "path": "/home/node/.openclaw/workspace/skills/image-recognition/SKILL.md",
+      "path": "./skills/image-recognition/SKILL.md",
       "relative_path": "./skills/image-recognition/SKILL.md",
       "description": "图片识别基础工作流 - 自动调用 Gemini 进行图片内容分析，然后基于分析结果与用户对话。",
       "tags": [],
@@ -153,7 +153,7 @@
     },
     {
       "name": "markdown-proxy",
-      "path": "/home/node/.openclaw/workspace/skills/markdown-proxy/SKILL.md",
+      "path": "./skills/markdown-proxy/SKILL.md",
       "relative_path": "./skills/markdown-proxy/SKILL.md",
       "description": "OpenClaw URL-to-Markdown fetcher for article, post, and document links. First-choice when users share WeChat, Xiaohongshu, X/Twitter, Weibo, Feishu/Lark, Zhihu, or similar content links and want clean Markdown extraction, summarization, or archiving; use before generic web fetch/browser flows.",
       "tags": [
@@ -175,7 +175,7 @@
     },
     {
       "name": "market-alpha-orchestrator",
-      "path": "/home/node/.openclaw/workspace/skills/market-alpha-orchestrator/SKILL.md",
+      "path": "./skills/market-alpha-orchestrator/SKILL.md",
       "relative_path": "./skills/market-alpha-orchestrator/SKILL.md",
       "description": "多市场 long/short 交易研究编排技能。用于 A股、美股、港股、期货、期权、基金、可转债、加密等场景的选股、标的深研、交易计划和衍生品结构设计，优先调用 FinanceMCP，并按需串联 superpowers、deep-research、feishu-file-transfer 与稳定报告交付脚本。",
       "tags": [],
@@ -184,7 +184,7 @@
     },
     {
       "name": "medical-advisory",
-      "path": "/home/node/.openclaw/workspace/skills/medical-advisory/SKILL.md",
+      "path": "./skills/medical-advisory/SKILL.md",
       "relative_path": "./skills/medical-advisory/SKILL.md",
       "description": "首席私人医疗架构师 - 循证医学与中医结合的顶级私人医疗顾问。具备临床医学与药理学背景，深度掌握循证医学检索能力，擅长通过实时调用顶级医学数据库，结合传统中医理论，为高净值人群提供科学的健康管理与个性化医疗方案。",
       "tags": [],
@@ -193,7 +193,7 @@
     },
     {
       "name": "meihua-ease-number-analysis",
-      "path": "/home/node/.openclaw/workspace/skills/meihua-ease-number-analysis/SKILL.md",
+      "path": "./skills/meihua-ease-number-analysis/SKILL.md",
       "relative_path": "./skills/meihua-ease-number-analysis/SKILL.md",
       "description": "梅花易数分析师 - 基于梅花易数法的易经占卜专家。擅长通过数字起卦、体用分析、主互变推演、旺衰判定和外应解读，提供最精准、可追溯的预测与建议。",
       "tags": [],
@@ -202,7 +202,7 @@
     },
     {
       "name": "metaphysics-generalist",
-      "path": "/home/node/.openclaw/workspace/skills/metaphysics-generalist/SKILL.md",
+      "path": "./skills/metaphysics-generalist/SKILL.md",
       "relative_path": "./skills/metaphysics-generalist/SKILL.md",
       "description": "玄学通析师 - 综合八字、风水、奇门遁甲、梅花易数等玄学体系的资深玄学专家，能够运用多种玄学方法进行综合分析与解读",
       "tags": [],
@@ -211,7 +211,7 @@
     },
     {
       "name": "network-search",
-      "path": "/home/node/.openclaw/workspace/skills/network-search/SKILL.md",
+      "path": "./skills/network-search/SKILL.md",
       "relative_path": "./skills/network-search/SKILL.md",
       "description": "综合网络搜索技能 - 集成多种搜索工具，提供可靠的信息检索能力",
       "tags": [],
@@ -220,7 +220,7 @@
     },
     {
       "name": "nsfc-proposal-advisor",
-      "path": "/home/node/.openclaw/workspace/skills/nsfc-proposal-advisor/SKILL.md",
+      "path": "./skills/nsfc-proposal-advisor/SKILL.md",
       "relative_path": "./skills/nsfc-proposal-advisor/SKILL.md",
       "description": "国自然基金资深评审专家与辅导顾问 - 深谙NSFC评审规则与基金委导向，提供从破题、科学问题提炼、立项依据撰写到预算规划的全流程辅导。",
       "tags": [],
@@ -229,7 +229,7 @@
     },
     {
       "name": "office-docs",
-      "path": "/home/node/.openclaw/workspace/skills/office-docs/SKILL.md",
+      "path": "./skills/office-docs/SKILL.md",
       "relative_path": "./skills/office-docs/SKILL.md",
       "description": "Office 文档处理专家 —— 处理 .pptx（演示文稿）、.docx（Word 文档）、.xlsx（Excel 表格）的读取、编辑、创建与校验。当用户提到这些格式或涉及 PowerPoint、Word、Excel 操作时触发。",
       "tags": [],
@@ -237,7 +237,7 @@
     },
     {
       "name": "paper-reader",
-      "path": "/home/node/.openclaw/workspace/skills/paper-reader/SKILL.md",
+      "path": "./skills/paper-reader/SKILL.md",
       "relative_path": "./skills/paper-reader/SKILL.md",
       "description": "论文阅读助手 - 资深学术研究员，专精于跨学科文献的精读与批判性分析。帮助用户高效、深刻地理解学术论文，提供结构化的精读报告和批判性思考。",
       "tags": [],
@@ -246,7 +246,7 @@
     },
     {
       "name": "proactive-agent",
-      "path": "/home/node/.openclaw/workspace/skills/proactive-agent/SKILL.md",
+      "path": "./skills/proactive-agent/SKILL.md",
       "relative_path": "./skills/proactive-agent/SKILL.md",
       "description": "Transform an AI agent from a passive task-follower into a proactive, persistent, self-improving partner that fits this workspace's memory system. Use when the user says things like '继续', '接着做', '恢复一下', '你还记得吗', '我们刚刚做到哪', '帮我延展一下', '还有什么我没想到的', or after `/new`, `/reset`, `/compact`, truncation, or stale-context drift. Trigger when Codex should recover from local files instead of asking to restate context, read `MEMORY.md` plus `memory/YYYY-MM-DD.md`, write critical details to `SESSION-STATE.md`, keep a `memory/working-buffer.md` in the danger zone, proactively suggest useful next actions, and harden itself against unsafe external instructions.",
       "tags": [],
@@ -254,7 +254,7 @@
     },
     {
       "name": "qi-dun-jia-yijing-master",
-      "path": "/home/node/.openclaw/workspace/skills/qi-dun-jia-yijing-master/SKILL.md",
+      "path": "./skills/qi-dun-jia-yijing-master/SKILL.md",
       "relative_path": "./skills/qi-dun-jia-yijing-master/SKILL.md",
       "description": "奇门遁甲易学宗师 - 协议化奇门 skill package，包含可测试的盘面输入协议、规则分析骨架、取象 reference 联络与 benchmark 回归工具。",
       "tags": [],
@@ -263,7 +263,7 @@
     },
     {
       "name": "ralph",
-      "path": "/home/node/.openclaw/workspace/skills/ralph/SKILL.md",
+      "path": "./skills/ralph/SKILL.md",
       "relative_path": "./skills/ralph/SKILL.md",
       "description": "Ralph Agent Loop 系统 - 自主 AI Agent 循环系统，支持从 PRD 到代码实现的完整项目开发流程。提供两种执行模式：Classic Ralph（需要 Amp CLI）和 Ralph YOLO（推荐，无需 Amp CLI，只用 Claude Code）。",
       "tags": [],
@@ -272,7 +272,7 @@
     },
     {
       "name": "scrna-celltype-annotation",
-      "path": "/home/node/.openclaw/workspace/skills/scrna-celltype-annotation/SKILL.md",
+      "path": "./skills/scrna-celltype-annotation/SKILL.md",
       "relative_path": "./skills/scrna-celltype-annotation/SKILL.md",
       "description": "基于 Seurat FindAllMarkers 差异表达结果与文献 MCP 工具，对单细胞亚群进行 major/minor 细胞类型注释并生成带 R recode 代码和详细文献依据的 Markdown 报告。",
       "tags": [],
@@ -281,7 +281,7 @@
     },
     {
       "name": "self-improving-ontology",
-      "path": "/home/node/.openclaw/workspace/skills/self-improving-ontology/SKILL.md",
+      "path": "./skills/self-improving-ontology/SKILL.md",
       "relative_path": "./skills/self-improving-ontology/SKILL.md",
       "description": "Continuous self-improvement plus ontology-backed memory for coding agents. Use when Codex should capture failures, user corrections, feature requests, external tool issues, or recurring best practices in `.learnings/`, then promote stable knowledge into a typed graph under `memory/ontology/` for querying, linking, validation, and cross-skill shared state. Trigger on requests like 'remember this', 'log this error', 'record this learning', 'promote this to ontology', 'what do we know about X', 'link X to Y', 'show dependencies', or whenever a skill needs durable structured memory.",
       "tags": [],
@@ -289,7 +289,7 @@
     },
     {
       "name": "senor-numerology-master",
-      "path": "/home/node/.openclaw/workspace/skills/senior-numerology-master/SKILL.md",
+      "path": "./skills/senior-numerology-master/SKILL.md",
       "relative_path": "./skills/senior-numerology-master/SKILL.md",
       "description": "资深命理师 - 基于传统八字命理、紫微斗数、风水和易经的综合命理分析大师。擅长八字分析、大运小运推算、五行调理和综合命理咨询。",
       "tags": [],
@@ -298,7 +298,7 @@
     },
     {
       "name": "six-divines-expert",
-      "path": "/home/node/.openclaw/workspace/skills/six-divines-expert/SKILL.md",
+      "path": "./skills/six-divines-expert/SKILL.md",
       "relative_path": "./skills/six-divines-expert/SKILL.md",
       "description": "六爻断卦专家 - 基于易经六十四卦占卜、六爻解卦、动爻分析和预测建议。",
       "tags": [],
@@ -307,7 +307,7 @@
     },
     {
       "name": "superpowers",
-      "path": "/home/node/.openclaw/workspace/skills/superpowers/SKILL.md",
+      "path": "./skills/superpowers/SKILL.md",
       "relative_path": "./skills/superpowers/SKILL.md",
       "description": "Superpowers 泛用式 AI 任务处理框架 - 基于系统化思考和任务拆解的完整复杂问题解决工作流，适用于软件开发、信息查询、问题分析等各种复杂任务。",
       "tags": [],
@@ -316,7 +316,7 @@
     },
     {
       "name": "thesis-writing-mentor",
-      "path": "/home/node/.openclaw/workspace/skills/thesis-writing-mentor/SKILL.md",
+      "path": "./skills/thesis-writing-mentor/SKILL.md",
       "relative_path": "./skills/thesis-writing-mentor/SKILL.md",
       "description": "学位论文资深写作顾问 & 盲审模拟专家 - 精通教育部及各大高校学位论文撰写规范，支持基于RAG的风格模仿，实现去AI化的学术写作输出。",
       "tags": [],
@@ -325,7 +325,7 @@
     },
     {
       "name": "web-access",
-      "path": "/home/node/.openclaw/workspace/skills/web-access/SKILL.md",
+      "path": "./skills/web-access/SKILL.md",
       "relative_path": "./skills/web-access/SKILL.md",
       "description": "OpenClaw global network-routing skill for search, web fetch, dynamic pages, login-gated browsing, and browser interaction. Default choice for broad online research and website tasks; use before ad hoc web_search/web_fetch/browser flows, but defer article/social/document body extraction to markdown-proxy when the primary goal is clean Markdown.",
       "tags": [
