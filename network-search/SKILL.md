@@ -27,7 +27,7 @@ metadata:
 
 ### 1. **Brave Search API** (curl 直接调用) ⭐ **非学术领域首选**
 - **状态**: ✅ 完全正常（已验证网页搜索和新闻搜索）
-- **API Key**: ``
+- **API Key**: 建议通过环境变量提供（例如 `BRAVE_API_KEY`），不要写入仓库
 - **主要功能**:
   - `brave_web_search` - 网页搜索
   - `brave_news_search` - 新闻搜索
@@ -44,13 +44,17 @@ metadata:
 - **适用场景**: 英文内容、全球信息、多类型搜索
 - **curl 模板**: 
   ```bash
+  # 建议把 token 放到环境变量里，而不是写进仓库/文档：
+  # - bash/zsh: export BRAVE_API_KEY="xxx"
+  # - PowerShell: $env:BRAVE_API_KEY="xxx"
+  #
   # 网页搜索
   curl -s "https://api.search.brave.com/res/v1/web/search?q=QUERY&count=10" \
-    -H "X-Subscription-Token: "
+    -H "X-Subscription-Token: <YOUR_TOKEN>"
   
   # 新闻搜索
   curl -s "https://api.search.brave.com/res/v1/news/search?q=QUERY&count=10" \
-    -H "X-Subscription-Token: "
+    -H "X-Subscription-Token: <YOUR_TOKEN>"
   ```
 
 ### 2. **智谱搜索 MCP** (`zhipu-web-search-sse`) ✅ **中文内容首选**
@@ -189,7 +193,7 @@ metadata:
 #### 网页搜索 (`/res/v1/web/search`)
 ```bash
 curl -s "https://api.search.brave.com/res/v1/web/search?q=QUERY&count=10" \
-  -H "X-Subscription-Token: "
+  -H "X-Subscription-Token: <YOUR_TOKEN>"
 ```
 
 **主要参数**:
@@ -204,7 +208,7 @@ curl -s "https://api.search.brave.com/res/v1/web/search?q=QUERY&count=10" \
 #### 新闻搜索 (`/res/v1/news/search`)
 ```bash
 curl -s "https://api.search.brave.com/res/v1/news/search?q=QUERY&count=10" \
-  -H "X-Subscription-Token: "
+  -H "X-Subscription-Token: <YOUR_TOKEN>"
 ```
 
 **额外参数**:
@@ -213,7 +217,7 @@ curl -s "https://api.search.brave.com/res/v1/news/search?q=QUERY&count=10" \
 #### 视频搜索 (`/res/v1/videos/search`)
 ```bash
 curl -s "https://api.search.brave.com/res/v1/videos/search?q=QUERY&count=10" \
-  -H "X-Subscription-Token: "
+  -H "X-Subscription-Token: <YOUR_TOKEN>"
 ```
 
 **额外参数**:
@@ -222,7 +226,7 @@ curl -s "https://api.search.brave.com/res/v1/videos/search?q=QUERY&count=10" \
 #### 图片搜索 (`/res/v1/images/search`)
 ```bash
 curl -s "https://api.search.brave.com/res/v1/images/search?q=QUERY&count=10" \
-  -H "X-Subscription-Token: "
+  -H "X-Subscription-Token: <YOUR_TOKEN>"
 ```
 
 **额外参数**:
